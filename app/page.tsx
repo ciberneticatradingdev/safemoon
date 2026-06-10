@@ -144,21 +144,24 @@ export default function TokenPage() {
 
         {/* Hero Section */}
         <div className="grid md:grid-cols-[300px_1fr] gap-4">
-          {/* Left Card — Full Logo */}
-          <div className="bg-[#0a1a3a] border-4 border-black p-6 flex flex-col items-center justify-center min-h-[280px]">
+          {/* Left Card — Coin BG */}
+          <div className="relative border-4 border-black overflow-hidden min-h-[280px]">
             <Image
-              src="/logo.jpg"
-              alt="SafeMoon"
-              width={200}
-              height={200}
-              className="rounded-full border-4 border-[#2563EB]"
+              src="/hero-left-bg.jpg"
+              alt="SafeMoon Coin"
+              fill
+              className="object-cover"
             />
-            <h1 className="text-3xl font-black leading-none text-white mt-4 tracking-tight">
-              SAFEMOON
-            </h1>
-            <div className="inline-flex items-center gap-2 bg-black text-white text-xs font-bold px-2 py-1 mt-3">
-              <span className="w-2 h-2 bg-[#3B82F6] rounded-full animate-pulse"></span>
-              BUYBACKS ACTIVE
+            {/* Bottom overlay for text */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+              <h1 className="text-3xl font-black leading-none text-white tracking-tight">
+                SAFEMOON
+              </h1>
+              <div className="inline-flex items-center gap-2 bg-black/60 text-white text-xs font-bold px-2 py-1 mt-2 backdrop-blur-sm">
+                <span className="w-2 h-2 bg-[#3B82F6] rounded-full animate-pulse"></span>
+                BUYBACKS ACTIVE
+              </div>
             </div>
           </div>
 
