@@ -136,7 +136,7 @@ export default function TokenPage() {
             </div>
             <a
               href="#"
-              className="mt-6 inline-block bg-white text-[#060D1F] font-bold px-6 py-3 border-4 border-black hover:bg-[#BFDBFE] transition-colors whitespace-nowrap text-center w-full sm:w-auto"
+              className="mt-6 inline-block bg-white text-[#060D1F] font-bold px-8 py-3 border-4 border-black hover:bg-[#BFDBFE] transition-colors"
             >
               BUY NOW →
             </a>
