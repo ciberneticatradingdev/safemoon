@@ -55,9 +55,20 @@ export default function TokenPage() {
   const marqueeText = "★ 100% CREATOR REWARDS → USDC BUYBACKS ● PUMP.FUN AGENT MODE ● THE TRUE SAFEMOON SPIRIT ● NOW STABLE ON USDC ● NO STAKING REQUIRED ● AUTOMATIC BUYBACKS ● BUILT ON SOLANA ● "
 
   return (
-    <div className="min-h-screen bg-[#060D1F]">
+    <div className="min-h-screen bg-[#060D1F] relative">
+      {/* Background image */}
+      <div className="fixed inset-0 z-0">
+        <Image
+          src="/bg-astronaut.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-[0.07]"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060D1F]/80 via-[#060D1F]/90 to-[#060D1F]" />
+      </div>
       {/* Header */}
-      <header className="border-b-4 border-black bg-[#0D1F3C] sticky top-0 z-50">
+      <header className="border-b-4 border-black bg-[#0D1F3C]/95 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-6">
             <a href="/" className="flex items-center gap-2 font-black text-white text-lg tracking-tight">
@@ -91,7 +102,7 @@ export default function TokenPage() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 py-6 space-y-6">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 py-6 space-y-6">
 
         {/* Hero Section */}
         <div className="grid md:grid-cols-[300px_1fr] gap-4">
@@ -114,21 +125,21 @@ export default function TokenPage() {
           </div>
 
           {/* Right Card */}
-          <div className="bg-[#1D4ED8] border-4 border-black p-8 flex flex-col justify-center">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-none mb-6">
-              THE TRUE<br />SAFEMOON<br />SPIRIT
-            </h2>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <p className="text-[#BFDBFE] text-sm max-w-md">
+          <div className="bg-[#1D4ED8] border-4 border-black p-8 flex flex-col justify-between">
+            <div>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-none mb-6">
+                THE TRUE<br />SAFEMOON<br />SPIRIT
+              </h2>
+              <p className="text-[#BFDBFE] text-sm max-w-md leading-relaxed">
                 100% of creator rewards are used for automatic USDC buybacks via pump.fun Agent Mode. No manual burns, no hidden wallets. Now stable on USDC.
               </p>
-              <a
-                href="#"
-                className="bg-white text-[#060D1F] font-bold px-6 py-3 border-4 border-black hover:bg-[#BFDBFE] transition-colors whitespace-nowrap"
-              >
-                BUY NOW →
-              </a>
             </div>
+            <a
+              href="#"
+              className="mt-6 inline-block bg-white text-[#060D1F] font-bold px-6 py-3 border-4 border-black hover:bg-[#BFDBFE] transition-colors whitespace-nowrap text-center w-full sm:w-auto"
+            >
+              BUY NOW →
+            </a>
           </div>
         </div>
 
@@ -220,7 +231,7 @@ export default function TokenPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#0D1F3C] border-t-4 border-black mt-6">
+      <footer className="relative z-10 bg-[#0D1F3C]/95 backdrop-blur-sm border-t-4 border-black mt-6">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Image
