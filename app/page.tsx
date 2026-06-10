@@ -68,7 +68,7 @@ export default function TokenPage() {
         />
       </div>
       {/* Header */}
-      <header className="border-b-4 border-black bg-[#0D1F3C]/95 backdrop-blur-sm sticky top-0 z-50">
+      <header className="border-b border-white/10 bg-black/30 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-6">
             <a href="/" className="flex items-center gap-2 font-black text-white text-lg tracking-tight">
