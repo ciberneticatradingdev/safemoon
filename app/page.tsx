@@ -63,7 +63,7 @@ export default function TokenPage() {
           alt=""
           fill
           className="object-cover"
-          style={{ opacity: 0.3 }}
+          style={{ opacity: 0.25 }}
           priority
         />
       </div>
