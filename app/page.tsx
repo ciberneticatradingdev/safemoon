@@ -134,12 +134,14 @@ export default function TokenPage() {
                 100% of creator rewards are used for automatic USDC buybacks via pump.fun Agent Mode. No manual burns, no hidden wallets. Now stable on USDC.
               </p>
             </div>
-            <a
-              href="#"
-              className="mt-6 inline-block bg-white text-[#060D1F] font-bold px-8 py-3 border-4 border-black hover:bg-[#BFDBFE] transition-colors"
-            >
-              BUY NOW →
-            </a>
+            <div className="mt-6">
+              <a
+                href="#"
+                className="bg-white text-[#060D1F] font-bold px-8 py-3 border-4 border-black hover:bg-[#BFDBFE] transition-colors"
+              >
+                BUY NOW →
+              </a>
+            </div>
           </div>
         </div>
 
