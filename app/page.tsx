@@ -1,13 +1,20 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Home, X, Copy, Check, Plus } from "lucide-react"
+import { Copy, Check, Plus } from "lucide-react"
 import Image from "next/image"
 import { config } from "@/lib/config"
 
 export default function TokenPage() {
   const [copied, setCopied] = useState(false)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const handleCopy = () => {
     navigator.clipboard.writeText(config.tokenCA)
@@ -54,6 +61,13 @@ export default function TokenPage() {
 
   const marqueeText = "★ 100% CREATOR REWARDS → USDC BUYBACKS ● PUMP.FUN AGENT MODE ● THE TRUE SAFEMOON SPIRIT ● NOW STABLE ON USDC ● NO STAKING REQUIRED ● AUTOMATIC BUYBACKS ● BUILT ON SOLANA ● "
 
+  // X (Twitter) SVG icon
+  const XIcon = () => (
+    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    </svg>
+  )
+
   return (
     <div className="min-h-screen bg-[#060D1F] relative">
       {/* Background image */}
@@ -67,38 +81,62 @@ export default function TokenPage() {
           priority
         />
       </div>
-      {/* Header */}
-      <header className="border-b border-white/10 bg-black/30 backdrop-blur-md sticky top-0 z-50">
+
+      {/* Header — transparent at top, blur on scroll */}
+      <header className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? "bg-black/40 backdrop-blur-md border-b border-white/10" 
+          : "bg-transparent border-b border-transparent"
+      }`}>
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4">
+            {/* Logo */}
             <a href="/" className="flex items-center gap-2 font-black text-white text-lg tracking-tight">
               <Image
                 src="/logo.jpg"
                 alt="SafeMoon logo"
                 width={32}
                 height={32}
-                className="border-2 border-black rounded-full"
+                className="rounded-full border border-white/20"
               />
               SAFEMOON
             </a>
-            <nav className="hidden sm:flex items-center gap-1">
-              <a href="/" className="flex items-center gap-1.5 px-3 py-1.5 bg-[#2563EB] text-white font-bold text-sm border-2 border-black">
-                <Home className="w-4 h-4" />
-                HOME
-              </a>
+
+            {/* Separator */}
+            <div className="hidden sm:block w-px h-5 bg-white/15" />
+
+            {/* Nav pills */}
+            <nav className="hidden sm:flex items-center gap-2">
+              <span className="flex items-center gap-1.5 px-3 py-1 text-white/50 text-xs font-bold tracking-wider">
+                <span className="w-1.5 h-1.5 bg-[#3B82F6] rounded-full animate-pulse" />
+                BUYBACKS ACTIVE
+              </span>
             </nav>
           </div>
-          {config.twitterUrl && (
+
+          {/* Right side — social + CTA */}
+          <div className="flex items-center gap-3">
+            {/* X icon — always visible */}
             <a
-              href={config.twitterUrl}
+              href={config.twitterUrl || "#"}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-10 h-10 bg-black text-white hover:bg-[#2563EB] transition-colors"
+              className="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 text-white/70 hover:bg-white/20 hover:text-white transition-all"
               aria-label="Follow SafeMoon on X"
             >
-              <X className="w-5 h-5" />
+              <XIcon />
             </a>
-          )}
+
+            {/* Pump.fun link */}
+            <a
+              href={config.pumpFunUrl || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-[#2563EB] text-white font-bold text-xs tracking-wider hover:bg-[#1D4ED8] transition-colors rounded-sm"
+            >
+              BUY ON PUMP.FUN
+            </a>
+          </div>
         </div>
       </header>
 
@@ -124,23 +162,36 @@ export default function TokenPage() {
             </div>
           </div>
 
-          {/* Right Card */}
-          <div className="bg-[#1D4ED8] border-4 border-black p-8 flex flex-col justify-between">
-            <div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-none mb-6">
-                THE TRUE<br />SAFEMOON<br />SPIRIT
-              </h2>
-              <p className="text-[#BFDBFE] text-sm max-w-md leading-relaxed">
-                100% of creator rewards are used for automatic USDC buybacks via pump.fun Agent Mode. No manual burns, no hidden wallets. Now stable on USDC.
-              </p>
-            </div>
-            <div className="mt-6">
-              <a
-                href="#"
-                className="bg-white text-[#060D1F] font-bold px-8 py-3 border-4 border-black hover:bg-[#BFDBFE] transition-colors"
-              >
-                BUY NOW →
-              </a>
+          {/* Right Card — with background image */}
+          <div className="relative border-4 border-black overflow-hidden flex flex-col justify-between min-h-[280px]">
+            {/* BG image */}
+            <Image
+              src="/hero-card-bg.jpg"
+              alt=""
+              fill
+              className="object-cover"
+            />
+            {/* Overlay for readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a1a3a]/90 via-[#0a1a3a]/70 to-transparent" />
+
+            {/* Content */}
+            <div className="relative z-10 p-8 flex flex-col justify-between h-full">
+              <div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-none mb-6">
+                  THE TRUE<br />SAFEMOON<br />SPIRIT
+                </h2>
+                <p className="text-white/80 text-sm max-w-md leading-relaxed">
+                  100% of creator rewards are used for automatic USDC buybacks via pump.fun Agent Mode. No manual burns, no hidden wallets. Now stable on USDC.
+                </p>
+              </div>
+              <div className="mt-6">
+                <a
+                  href="#"
+                  className="bg-white text-[#060D1F] font-bold px-8 py-3 border-4 border-black hover:bg-[#BFDBFE] transition-colors"
+                >
+                  BUY NOW →
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -233,7 +284,7 @@ export default function TokenPage() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 bg-[#0D1F3C]/95 backdrop-blur-sm border-t-4 border-black mt-6">
+      <footer className="relative z-10 bg-black/30 backdrop-blur-sm border-t border-white/10 mt-6">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Image
@@ -241,24 +292,22 @@ export default function TokenPage() {
               alt="SafeMoon"
               width={24}
               height={24}
-              className="border border-black rounded-full"
+              className="border border-white/20 rounded-full"
             />
-            <p className="text-white text-sm font-bold">
+            <p className="text-white/60 text-sm font-bold">
               SAFEMOON © 2026 · BUILT ON SOLANA
             </p>
           </div>
           <div className="flex items-center gap-4">
-            {config.twitterUrl && (
-              <a
-                href={config.twitterUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 text-white text-sm font-bold hover:text-[#60A5FA] transition-colors"
-              >
-                <X className="w-4 h-4" />
-                FOLLOW
-              </a>
-            )}
+            <a
+              href={config.twitterUrl || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-white/50 text-sm font-bold hover:text-white transition-colors"
+            >
+              <XIcon />
+              FOLLOW
+            </a>
           </div>
         </div>
       </footer>
