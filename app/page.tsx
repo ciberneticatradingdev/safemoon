@@ -85,8 +85,8 @@ export default function TokenPage() {
       {/* Header — transparent at top, blur on scroll */}
       <header className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? "bg-black/40 backdrop-blur-md border-b border-white/10" 
-          : "bg-transparent border-b border-transparent"
+          ? "backdrop-blur-md border-b border-white/10" 
+          : "border-b border-transparent"
       }`}>
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -172,7 +172,7 @@ export default function TokenPage() {
               className="object-cover"
             />
             {/* Overlay for readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a1a3a]/90 via-[#0a1a3a]/70 to-transparent" />
+            <div className="absolute inset-0 bg-black/20" />
 
             {/* Content */}
             <div className="relative z-10 p-8 flex flex-col justify-between h-full">
@@ -284,7 +284,7 @@ export default function TokenPage() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 bg-black/30 backdrop-blur-sm border-t border-white/10 mt-6">
+      <footer className="relative z-10 backdrop-blur-sm border-t border-white/10 mt-6">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Image
