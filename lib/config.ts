@@ -7,7 +7,8 @@ export const config = {
   tokenName: process.env.NEXT_PUBLIC_TOKEN_NAME || "$SAFEMOON",
   tokenCA: process.env.NEXT_PUBLIC_TOKEN_CA || "",
   twitterUrl: process.env.NEXT_PUBLIC_TWITTER_URL || "",
+  pumpFunUrl: process.env.NEXT_PUBLIC_PUMPFUN_URL || "",
   tokenDescription:
     process.env.NEXT_PUBLIC_TOKEN_DESCRIPTION ||
-    "The first Solana token that automatically distributes USDC rewards to holders. Hold $SAFEMOON, earn real dollars.",
+    "100% of creator rewards used for automatic USDC buybacks via pump.fun Agent Mode. The true SafeMoon spirit — now stable on USDC.",
 }
