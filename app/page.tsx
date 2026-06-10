@@ -189,7 +189,9 @@ export default function TokenPage() {
               </div>
               <div className="mt-6">
                 <a
-                  href="#"
+                  href={config.pumpFunUrl || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
                   className="bg-white text-[#060D1F] font-bold px-8 py-3 border-4 border-black hover:bg-[#BFDBFE] transition-colors"
                 >
                   BUY NOW →
