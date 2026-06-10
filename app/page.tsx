@@ -62,10 +62,10 @@ export default function TokenPage() {
           src="/bg-astronaut.jpg"
           alt=""
           fill
-          className="object-cover opacity-[0.25]"
+          className="object-cover opacity-40"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#060D1F]/60 via-[#060D1F]/80 to-[#060D1F]/95" />
+        <div className="absolute inset-0 bg-[#060D1F]/50" />
       </div>
       {/* Header */}
       <header className="border-b-4 border-black bg-[#0D1F3C]/95 backdrop-blur-sm sticky top-0 z-50">
